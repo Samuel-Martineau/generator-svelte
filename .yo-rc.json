@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Samuel-Martineau",
+      "authorEmail": "samumartineau@gmail.com",
+      "authorUrl": "https://smartineau.me"
+    }
+  }
+}
