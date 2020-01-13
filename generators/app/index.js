@@ -7,7 +7,7 @@ const yosay = require('yosay');
 const fs = require('fs');
 
 module.exports = class extends Generator {
-  prompting() {
+  async prompting() {
     this.log(
       yosay(
         `Welcome to the exceptional ${chalk.red(
@@ -66,18 +66,25 @@ module.exports = class extends Generator {
         choices: ['HTML', 'PUG'],
         store: true,
       },
+      {
+        type: 'confirm',
+        name: 'gitInit',
+        message: 'Do you want to initialize a git repository ?',
+        default: true,
+        store: true,
+      },
     ];
 
-    return this.prompt(prompts).then(props => {
-      const { email, website, name } = props;
-      this.composeWith(require.resolve('generator-license'), {
-        name,
-        email,
-        website,
-        licensePrompt: 'Which license do you want to use?',
-      });
-      this.props = props;
+    const props = await this.prompt(prompts);
+    const { email, website, name } = props;
+
+    this.composeWith(require.resolve('generator-license'), {
+      name,
+      email,
+      website,
+      licensePrompt: 'Which license do you want to use?',
     });
+    this.props = props;
   }
 
   async writing() {
@@ -96,6 +103,7 @@ module.exports = class extends Generator {
     } catch {}
 
     this.fs.copy(this.templatePath('**/*'), this.destinationRoot());
+    this.fs.copy(this.templatePath('**/.*'), this.destinationRoot());
 
     let otherDevDependencies = [];
 
@@ -184,5 +192,19 @@ module.exports = class extends Generator {
 
   install() {
     this.installDependencies({ bower: false, npm: true });
+  }
+
+  end() {
+    if (this.props.gitInit) {
+      this.spawnCommandSync('git', ['init']);
+      this.spawnCommandSync('git', ['add', '.']);
+    }
+
+    this.log(
+      chalk.bold(
+        chalk.green('Project has been generated ! ') +
+          chalk.white('Thank you for using "generator-svelte"'),
+      ),
+    );
   }
 };

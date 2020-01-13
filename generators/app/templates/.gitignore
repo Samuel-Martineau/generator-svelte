@@ -1,6 +1,3 @@
 .DS_Store
 node_modules
 public/*
-yarn.lock
-yarn-error.log
-package-lock.json
