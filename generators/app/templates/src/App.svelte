@@ -6,4 +6,10 @@
 
 </style>
 
+<head>
+  <title>
+    <!-- Title -->
+  </title>
+</head>
+
 <!-- MARKUP -->

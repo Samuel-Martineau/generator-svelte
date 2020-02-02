@@ -152,6 +152,7 @@ module.exports = class extends Generator {
     this.fs.writeJSON(this.destinationPath('package.json'), pkgJson);
 
     let appSvelte = this.fs.read(this.destinationPath('src/App.svelte'));
+    appSvelte = appSvelte.replace('<!-- Title -->', title);
     const scriptL =
       scriptLanguage === 'CoffeeScript'
         ? 'text/coffeescript'
@@ -180,13 +181,6 @@ module.exports = class extends Generator {
       this.fs
         .read(this.destinationPath('src/main.js'))
         .replace('.style', '.' + styleExt),
-    );
-
-    this.fs.write(
-      this.destinationPath('src/index.html'),
-      this.fs
-        .read(this.destinationPath('src/index.html'))
-        .replace('<!-- Title -->', title),
     );
   }
 
