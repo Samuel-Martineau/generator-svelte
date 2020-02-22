@@ -18,7 +18,6 @@
     "svelte-preprocess": "^3.3.0",
     "postcss": "^7.0.26",
     "postcss-load-config": "^2.1.0",
-    "rollup-plugin-delete": "^1.1.0",
     "rollup-plugin-postcss": "^2.0.3",
     "delay-cli": "^1.1.0"
   },

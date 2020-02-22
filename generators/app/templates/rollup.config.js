@@ -1,13 +1,13 @@
+import fs from 'fs';
+import path from 'path';
+
 import buble from '@rollup/plugin-buble';
 import commonjs from '@rollup/plugin-commonjs';
-import copy from 'rollup-plugin-copy';
-import del from 'rollup-plugin-delete';
-import fs from 'fs';
-import livereload from 'rollup-plugin-livereload';
-import { minify } from 'html-minifier';
-import path from 'path';
-import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
+import { minify } from 'html-minifier';
+import copy from 'rollup-plugin-copy';
+import livereload from 'rollup-plugin-livereload';
+import postcss from 'rollup-plugin-postcss';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 
@@ -33,9 +33,6 @@ export default {
     file: path.join(__dirname, 'public', 'bundle.js'),
   },
   plugins: [
-    del({
-      targets: 'public/*',
-    }),
     svelte({
       dev: !production,
       css: (css) => {
