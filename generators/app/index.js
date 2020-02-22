@@ -183,6 +183,13 @@ module.exports = class extends Generator {
         .read(this.destinationPath('src/main.js'))
         .replace('.style', '.' + styleExt),
     );
+
+    this.fs.write(
+      this.destinationPath('README.md'),
+      this.fs
+        .read(this.destinationPath('README.md'))
+        .replace('<!-- Title -->', title),
+    );
   }
 
   install() {
