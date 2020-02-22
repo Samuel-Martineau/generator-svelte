@@ -102,6 +102,7 @@ module.exports = class extends Generator {
       fs.mkdirSync(this.destinationPath('public'));
     } catch {}
 
+    this.fs.copy(this.templatePath('./.*'), this.destinationRoot());
     this.fs.copy(this.templatePath('**/*'), this.destinationRoot());
     this.fs.copy(this.templatePath('**/.*'), this.destinationRoot());
 
