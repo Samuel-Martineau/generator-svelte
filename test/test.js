@@ -13,6 +13,7 @@ const {
 } = require('../common/variables');
 
 describe('generator-svelte:app', function() {
+  this.timeout(0);
   describe('it works with all possibilities of languages', function() {
     for (const scriptLang of scriptLangs) {
       for (const styleLang of styleLangs) {
@@ -70,7 +71,6 @@ describe('generator-svelte:app', function() {
     }
   });
   describe('it respects the selected options', function() {
-    this.timeout(0);
     describe('it uses the selected package manager', function() {
       const prompts = {
         title: 'Test App',
