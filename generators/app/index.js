@@ -5,6 +5,14 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const urlize = require('urlize').urlize;
 
+const {
+  mimeTypes,
+  styleExts,
+  scriptLangs,
+  styleLangs,
+  markupLangs,
+} = require('../../common/variables');
+
 module.exports = class extends Generator {
   async prompting() {
     this.log(
@@ -45,7 +53,7 @@ module.exports = class extends Generator {
         name: 'scriptLang',
         message:
           'In wich language do you want to write the scripts of your Svelte app ?',
-        choices: ['JavaScript', 'TypeScript', 'CoffeeScript'],
+        choices: scriptLangs,
         store: true,
       },
       {
@@ -53,7 +61,7 @@ module.exports = class extends Generator {
         name: 'styleLang',
         message:
           'In wich language do you want to write the styles of your Svelte app ?',
-        choices: ['CSS', 'SCSS', 'SASS', 'LESS', 'STYLUS'],
+        choices: styleLangs,
         store: true,
       },
       {
@@ -61,7 +69,7 @@ module.exports = class extends Generator {
         name: 'markupLang',
         message:
           'In wich language do you want to write the markups of your Svelte app ?',
-        choices: ['HTML', 'PUG'],
+        choices: markupLangs,
         store: true,
       },
       {
@@ -104,24 +112,7 @@ module.exports = class extends Generator {
       authorEmail,
       authorWebsite,
     } = this.props;
-    const styleExts = {
-      CSS: 'css',
-      SCSS: 'scss',
-      SASS: 'sass',
-      LESS: 'less',
-      STYLUS: 'styl',
-    };
     const styleExt = styleExts[styleLang];
-    const mimeTypes = {
-      JavaScript: 'javascript',
-      TypeScript: 'typescript',
-      CoffeeScript: 'coffee',
-      CSS: 'css',
-      SCSS: 'scss',
-      SASS: 'sass',
-      LESS: 'less',
-      STYLUS: 'stylus',
-    };
     // Static files
     this.fs.copy(
       this.templatePath('gitignore'),
@@ -151,7 +142,7 @@ module.exports = class extends Generator {
     // Package.json
     this.fs.write(
       this.destinationPath('package.json'),
-      ejs.render(this.fs.read(this.templatePath('package.json')), {
+      ejs.render(this.fs.read(this.templatePath('_package.json')), {
         title: urlize(title),
         author: {
           name: authorName,
