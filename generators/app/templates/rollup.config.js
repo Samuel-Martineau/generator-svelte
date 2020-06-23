@@ -8,6 +8,7 @@ import { minify } from 'html-minifier';
 import path from 'path';
 import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
+import serve from 'rollup-plugin-serve';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 
@@ -71,8 +72,19 @@ export default {
           },
         ],
       }),
-    !production && serve(),
-    !production && livereload('public'),
+    !production &&
+      serve({
+        open: true,
+        verbose: true,
+        contentBase: 'public',
+        host: 'localhost',
+      }),
+    !production &&
+      livereload({
+        watch: 'public',
+        verbose: true,
+        delay: 500,
+      }),
     production &&
       minifyHtml(
         path.join(srcDir, 'index.html'),
@@ -102,20 +114,3 @@ export default {
     clearScreen: true,
   },
 };
-
-function serve() {
-  let started = false;
-
-  return {
-    writeBundle() {
-      if (!started) {
-        started = true;
-
-        require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-          stdio: ['ignore', 'inherit', 'inherit'],
-          shell: true,
-        });
-      }
-    },
-  };
-}
