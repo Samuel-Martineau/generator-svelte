@@ -1,6 +1,6 @@
 # generator-svelte
 
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] ![Publish & Test on Push](https://github.com/Samuel-Martineau/generator-svelte/workflows/Publish%20&%20Test%20on%20Push/badge.svg)
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] ![Build](https://github.com/Samuel-Martineau/generator-svelte/workflows/Build/badge.svg)
 
 **generator-svelte** is a Yeoman generator generating a boilerplate Svelte.js app
 
