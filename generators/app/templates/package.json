@@ -1,0 +1,51 @@
+{
+  "name": "<%= title %>",
+  "version": "1.0.0",
+  "author": {
+    "name": "<%= author.name %>",
+    "email": "<%= author.email %>",
+    "url": "<%= author.website %>"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    <% if (usesTS) { %>
+      "typescript": "^3.9.5",
+    <% } %>
+    <% if (usesCoffeeScript) { %>
+      "coffeescript": "^2.5.1",
+    <% } %>
+    <% if (usesSASS) { %>
+      "node-sass": "^4.14.1",
+    <% } %>
+    <% if (usesLESS) { %>
+      "less": "^3.11.3",
+    <% } %>
+    <% if (usesSTYLUS) { %>
+      "stylus": "^0.54.7",
+    <% } %>
+    <% if (usesPug) { %>
+      "pug": "^3.0.0",
+    <% } %>
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-postcss": "^3.1.2",
+    "sirv-cli": "^0.4.4",
+    "svelte": "^3.0.0",
+    "svelte-preprocess": "^3.9.10",
+    "autoprefixer": "^9.8.2",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "html-minifier": "^4.0.0",
+    "@rollup/plugin-babel": "^5.0.4"
+  }
+}
