@@ -55,18 +55,13 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "linters": {
-      "*.js": [
-        "eslint --fix",
-        "git add"
-      ],
-      "*.json": [
-        "prettier --write",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "**/templates"
+    "*!(*/templates).js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
     ]
   },
   "husky": {
