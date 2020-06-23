@@ -1,6 +1,6 @@
 # generator-svelte
 
-[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] ![Build](https://github.com/Samuel-Martineau/generator-svelte/workflows/Build/badge.svg)
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Build](https://github.com/Samuel-Martineau/generator-svelte/workflows/Build/badge.svg)][gh-actions-url]
 
 **generator-svelte** is a Yeoman generator generating a boilerplate Svelte.js app
 
@@ -58,3 +58,4 @@ Apache-2.0 © [Samuel-Martineau](https://github.com/Samuel-Martineau/) & [Doudou
 [npm-version-image]: https://badge.fury.io/js/generator-svelte.svg
 [npm-downloads-image]: https://img.shields.io/npm/dt/generator-svelte?label=npm%20downloads
 [npm-url]: https://npmjs.org/package/generator-svelte
+[gh-actions-url]: https://github.com/Samuel-Martineau/generator-svelte/actions?query=workflow%3ABuild
