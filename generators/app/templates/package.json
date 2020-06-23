@@ -8,8 +8,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public"
+    "dev": "rollup -c -w"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -40,7 +39,6 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-postcss": "^3.1.2",
-    "sirv-cli": "^0.4.4",
     "svelte": "^3.0.0",
     "svelte-preprocess": "^3.9.10",
     "autoprefixer": "^9.8.2",
