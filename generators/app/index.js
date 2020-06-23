@@ -91,7 +91,7 @@ module.exports = class extends Generator {
     ];
 
     const props = await this.prompt(prompts);
-    props.authorWebsite = normalizeUrl(authorWebsite);
+    props.authorWebsite = normalizeUrl(props.authorWebsite);
 
     const { authorName, authorEmail, authorWebsite } = props;
 
