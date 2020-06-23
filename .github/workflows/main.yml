@@ -1,4 +1,4 @@
-name: Publish & Test on Push
+name: Build
 
 on: push
 
@@ -19,7 +19,8 @@ jobs:
         run: yarn install
       - name: test
         run: yarn test
-  install:
+  publish:
+    name: Publish to NPM
     runs-on: ubuntu-latest
     needs: test
     steps:
