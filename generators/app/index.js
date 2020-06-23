@@ -184,4 +184,19 @@ module.exports = class extends Generator {
       bower: false,
     });
   }
+
+  end() {
+    if (this.props.gitInit) {
+      this.spawnCommandSync('git', ['init']);
+      this.spawnCommandSync('git', ['add', '.']);
+    }
+
+    this.log(
+      chalk.bold(
+        chalk.green('Project has been generated ! ') +
+          chalk.white('Thank you for using ') +
+          chalk.red('generator-svelte'),
+      ),
+    );
+  }
 };
