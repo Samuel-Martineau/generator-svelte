@@ -70,8 +70,8 @@ describe('generator-svelte:app', () => {
     }
   });
   describe('it respects the selected options', () => {
+    this.timeout(0);
     describe('it uses the selected package manager', function() {
-      this.timeout(0);
       const prompts = {
         title: 'Test App',
         license: 'UNLICENSED',
