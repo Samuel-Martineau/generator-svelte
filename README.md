@@ -28,17 +28,17 @@ yo svelte
 
 - **Script languages**
   - JavaScript
-  - TypeScript
-  - CoffeeScript
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [CoffeeScript](https://coffeescript.org/)
 - **Style languages**
   - CSS
-  - SCSS
-  - Sass
-  - LESS
-  - Stylus
+  - [SCSS](https://sass-lang.com/)
+  - [SASS](https://sass-lang.com/)
+  - [LESS](http://lesscss.org/)
+  - [STYLUS](https://stylus-lang.com/)
 - **Markup languages**
   - HTML
-  - Pug
+  - [PUG](https://pugjs.org/api/getting-started.html)
 
 ## Supported package managers
 
