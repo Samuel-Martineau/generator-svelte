@@ -12,14 +12,14 @@ const {
   mimeTypes,
 } = require('../common/variables');
 
-describe('generator-svelte:app', () => {
-  describe('it works with all possibilities of languages', () => {
+describe('generator-svelte:app', function() {
+  describe('it works with all possibilities of languages', function() {
     for (const scriptLang of scriptLangs) {
       for (const styleLang of styleLangs) {
         for (const markupLang of markupLangs) {
-          describe(`${scriptLang} ${styleLang} ${markupLang}`, () => {
+          describe(`${scriptLang} ${styleLang} ${markupLang}`, function() {
             const title = 'Test App';
-            before(async () => {
+            before(async function() {
               await helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
@@ -43,7 +43,7 @@ describe('generator-svelte:app', () => {
                 'src/App.svelte',
                 `src/global.${styleExts[styleLang]}`,
               ]));
-            it('it creates the correct App.svelte file', () => {
+            it('it creates the correct App.svelte file', function() {
               assert.fileContent(
                 'src/App.svelte',
                 ejs.render(
@@ -69,7 +69,7 @@ describe('generator-svelte:app', () => {
       }
     }
   });
-  describe('it respects the selected options', () => {
+  describe('it respects the selected options', function() {
     this.timeout(0);
     describe('it uses the selected package manager', function() {
       const prompts = {
@@ -80,7 +80,7 @@ describe('generator-svelte:app', () => {
         markupLang: 'HTML',
         gitInit: false,
       };
-      it('it uses Yarn when selected', async () => {
+      it('it uses Yarn when selected', async function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
           .withOptions({
@@ -93,7 +93,7 @@ describe('generator-svelte:app', () => {
         assert.file('yarn.lock');
         assert.noFile('package-lock.json');
       });
-      it('it uses NPM when selected', async () => {
+      it('it uses NPM when selected', async function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
           .withOptions({
@@ -107,7 +107,7 @@ describe('generator-svelte:app', () => {
         assert.noFile('yarn.lock');
       });
     });
-    describe('it inits the git repo when selected', () => {
+    describe('it inits the git repo when selected', function() {
       const prompts = {
         title: 'Test App',
         license: 'UNLICENSED',
@@ -115,7 +115,7 @@ describe('generator-svelte:app', () => {
         styleLang: 'CSS',
         markupLang: 'HTML',
       };
-      it('it inits the git repo when selected', async () => {
+      it('it inits the git repo when selected', async function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
           .withPrompts({
@@ -124,7 +124,7 @@ describe('generator-svelte:app', () => {
           });
         assert.file('.git');
       });
-      it("it doesn't init the git repo when not selected", async () => {
+      it("it doesn't init the git repo when not selected", async function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
           .withPrompts({
