@@ -151,7 +151,7 @@ module.exports = class extends Generator {
     // Package.json
     this.fs.write(
       this.destinationPath('package.json'),
-      ejs.render(this.fs.read(this.templatePath('package.json')), {
+      ejs.render(this.fs.read(this.templatePath('_package.json')), {
         title: urlize(title),
         author: {
           name: authorName,
