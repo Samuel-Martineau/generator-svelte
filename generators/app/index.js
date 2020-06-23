@@ -4,6 +4,7 @@ const ejs = require('ejs');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const urlize = require('urlize').urlize;
+const normalizeUrl = require('normalize-url');
 
 const {
   mimeTypes,
@@ -90,6 +91,8 @@ module.exports = class extends Generator {
     ];
 
     const props = await this.prompt(prompts);
+    props.authorWebsite = normalizeUrl(authorWebsite);
+
     const { authorName, authorEmail, authorWebsite } = props;
 
     this.composeWith(require.resolve('generator-license'), {
