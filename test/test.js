@@ -14,22 +14,31 @@ const {
 
 describe('generator-svelte:app', function() {
   this.timeout(0);
+  const basePrompts = {
+    authorName: 'Test Author',
+    authorEmail: 'test-email@example.com',
+    authorWebsite: 'example.com',
+    title: 'Test App',
+    license: 'UNLICENSED',
+    scriptLang: 'JavaScript',
+    styleLang: 'CSS',
+    markupLang: 'HTML',
+    packageManager: 'NPM',
+    gitInit: false,
+  };
   describe('it works with all possibilities of languages', function() {
     for (const scriptLang of scriptLangs) {
       for (const styleLang of styleLangs) {
         for (const markupLang of markupLangs) {
           describe(`${scriptLang} ${styleLang} ${markupLang}`, function() {
-            const title = 'Test App';
             before(async function() {
               await helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
-                  title,
-                  license: 'UNLICENSED',
+                  ...basePrompts,
                   scriptLang,
                   styleLang,
                   markupLang,
-                  gitInit: false,
                 });
             });
             it('it creates the right files', () =>
@@ -57,7 +66,7 @@ describe('generator-svelte:app', function() {
                     )
                     .toString(),
                   {
-                    title,
+                    title: basePrompts.title,
                     scriptLang: mimeTypes[scriptLang],
                     styleLang: mimeTypes[styleLang],
                     usesPug: markupLang === 'PUG',
@@ -72,14 +81,6 @@ describe('generator-svelte:app', function() {
   });
   describe('it respects the selected options', function() {
     describe('it uses the selected package manager', function() {
-      const prompts = {
-        title: 'Test App',
-        license: 'UNLICENSED',
-        scriptLang: 'JavaScript',
-        styleLang: 'CSS',
-        markupLang: 'HTML',
-        gitInit: false,
-      };
       it('it uses Yarn when selected', async function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
@@ -87,7 +88,7 @@ describe('generator-svelte:app', function() {
             'skip-install': false,
           })
           .withPrompts({
-            ...prompts,
+            ...basePrompts,
             packageManager: 'Yarn',
           });
         assert.file('yarn.lock');
@@ -100,7 +101,7 @@ describe('generator-svelte:app', function() {
             'skip-install': false,
           })
           .withPrompts({
-            ...prompts,
+            ...basePrompts,
             packageManager: 'NPM',
           });
         assert.file('package-lock.json');
@@ -108,18 +109,11 @@ describe('generator-svelte:app', function() {
       });
     });
     describe('it inits the git repo when selected', function() {
-      const prompts = {
-        title: 'Test App',
-        license: 'UNLICENSED',
-        scriptLang: 'JavaScript',
-        styleLang: 'CSS',
-        markupLang: 'HTML',
-      };
       it('it inits the git repo when selected', async function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
           .withPrompts({
-            ...prompts,
+            ...basePrompts,
             gitInit: true,
           });
         assert.file('.git');
@@ -128,7 +122,7 @@ describe('generator-svelte:app', function() {
         await helpers
           .run(path.join(__dirname, '../generators/app'))
           .withPrompts({
-            ...prompts,
+            ...basePrompts,
             gitInit: false,
           });
         assert.noFile('.git');
