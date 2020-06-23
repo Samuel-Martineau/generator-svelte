@@ -124,7 +124,7 @@ module.exports = class extends Generator {
     };
     // Static files
     this.fs.copy(
-      this.templatePath('.gitignore'),
+      this.templatePath('gitignore'),
       this.destinationPath('.gitignore'),
     );
     this.fs.copy(
@@ -151,7 +151,7 @@ module.exports = class extends Generator {
     // Package.json
     this.fs.write(
       this.destinationPath('package.json'),
-      ejs.render(this.fs.read(this.templatePath('_package.json')), {
+      ejs.render(this.fs.read(this.templatePath('package.json')), {
         title: urlize(title),
         author: {
           name: authorName,
