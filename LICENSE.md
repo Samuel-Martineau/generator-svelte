@@ -1,4 +1,4 @@
-Copyright 2020 [these people](https://github.com/Samuel-Martineau/generator-svelte/graphs/contributors)
+Copyright 2020 [Samuel Martineau](https://github.com/Samuel-Martineau/) & [Vu Dang Khoa Chiem](https://github.com/Doudou8)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

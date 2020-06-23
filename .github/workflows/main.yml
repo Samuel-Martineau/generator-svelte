@@ -1,8 +1,6 @@
 name: Auto-Publish on Release
 
-on:
-  release:
-    types: [published]
+on: push
 
 jobs:
   install-build-publish:

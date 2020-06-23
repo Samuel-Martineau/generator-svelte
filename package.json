@@ -3,16 +3,16 @@
   "version": "2.0.0",
   "description": "Yeoman generator generating a Svelte.js app",
   "homepage": "https://github.com/Samuel-Martineau/generator-svelte/",
-  "author": {
-    "name": "samuel_martineau",
-    "email": "samumartineau@gmail.com",
-    "url": "https://smartineau.me"
-  },
   "contributors": [
     {
       "name": "doudou8",
       "email": "cvdkhoa@gmail.com",
       "url": "https://dcodes.dev"
+    },
+    {
+      "name": "samuel_martineau",
+      "email": "samumartineau@gmail.com",
+      "url": "https://smartineau.me"
     }
   ],
   "files": [
