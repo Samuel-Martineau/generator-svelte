@@ -69,7 +69,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'markupLang',
         message:
-          'In which language do you want to write the markups of your Svelte app ?',
+          'In which language do you want to write the markup of your Svelte app ?',
         choices: markupLangs,
         store: true,
       },
