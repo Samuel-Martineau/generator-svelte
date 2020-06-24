@@ -53,7 +53,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'scriptLang',
         message:
-          'In wich language do you want to write the scripts of your Svelte app ?',
+          'In which language do you want to write the scripts of your Svelte app ?',
         choices: scriptLangs,
         store: true,
       },
@@ -61,7 +61,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'styleLang',
         message:
-          'In wich language do you want to write the styles of your Svelte app ?',
+          'In which language do you want to write the styles of your Svelte app ?',
         choices: styleLangs,
         store: true,
       },
@@ -69,7 +69,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'markupLang',
         message:
-          'In wich language do you want to write the markups of your Svelte app ?',
+          'In which language do you want to write the markups of your Svelte app ?',
         choices: markupLangs,
         store: true,
       },
