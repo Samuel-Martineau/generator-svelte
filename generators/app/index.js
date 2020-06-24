@@ -100,7 +100,7 @@ module.exports = class extends Generator {
       name: authorName,
       email: authorEmail,
       website: authorWebsite,
-      licensePrompt: 'Which license do you want to use?',
+      licensePrompt: 'Which license do you want to use ?',
     });
     this.props = props;
   }
