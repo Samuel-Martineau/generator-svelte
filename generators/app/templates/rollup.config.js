@@ -105,6 +105,7 @@ export default {
       ),
     production &&
       babel({
+        babelHelpers: 'bundled',
         exclude: ['node_modules/@babel/**'],
         presets: ['@babel/preset-env'],
       }),
