@@ -130,17 +130,29 @@ module.exports = class extends Generator {
       this.templatePath('src/index.html'),
       this.destinationPath('src/index.html'),
     );
-    this.fs.copy(
-      this.templatePath('rollup.config.js'),
-      this.destinationPath('rollup.config.js'),
-    );
-    // Main.js
+    if (scriptLang === 'TypeScript') {
+      this.fs.copy(
+        this.templatePath('tsconfig.json'),
+        this.destinationPath('tsconfig.json'),
+      );
+      this.fs.copy(
+        this.templatePath('.vscode/extensions.json'),
+        this.destinationPath('.vscode/extensions.json'),
+      );
+    }
+
+    // Main.js (Or TS)
     this.fs.write(
       this.destinationPath('src/main.js'),
       ejs.render(this.fs.read(this.templatePath('src/main.js')), {
         styleExt,
       }),
     );
+    if (scriptLang === 'TypeScript')
+      this.fs.move(
+        this.destinationPath('src/main.js'),
+        this.destinationPath('src/main.ts'),
+      );
     // Global Styles
     this.fs.write(this.destinationPath(`src/global.${styleExt}`), '');
     // Package.json
@@ -159,6 +171,14 @@ module.exports = class extends Generator {
         usesLESS: styleLang === 'LESS',
         usesSTYLUS: styleLang === 'STYLUS',
         usesPug: markupLang === 'PUG',
+      }),
+    );
+    // Rollup.config.js
+    this.fs.write(
+      this.destinationPath('rollup.config.js'),
+      ejs.render(this.fs.read(this.templatePath('rollup.config.js')), {
+        usesTS: scriptLang === 'TypeScript',
+        scriptExt: scriptLang === 'TypeScript' ? 'ts' : 'js',
       }),
     );
     // App.svelte

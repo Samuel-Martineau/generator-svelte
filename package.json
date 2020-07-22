@@ -1,6 +1,6 @@
 {
   "name": "generator-svelte",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "Yeoman generator generating a Svelte.js app",
   "homepage": "https://github.com/Samuel-Martineau/generator-svelte/",
   "contributors": [

@@ -8,13 +8,19 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w"<% if (usesTS) { %>,
+    "validate": "svelte-check"
+    <% } %>
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     <% if (usesTS) { %>
+      "@rollup/plugin-typescript": "^4.0.0",
       "typescript": "^3.9.5",
+      "svelte-check": "^0.1.0",
+      "tslib": "^2.0.0",
+      "@tsconfig/svelte": "^1.0.0",
     <% } %>
     <% if (usesCoffeeScript) { %>
       "coffeescript": "^2.5.1",

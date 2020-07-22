@@ -1,16 +1,19 @@
 import babel from '@rollup/plugin-babel';
-import cleaner from 'rollup-plugin-cleaner';
 import commonjs from '@rollup/plugin-commonjs';
-import copy from 'rollup-plugin-copy';
+import resolve from '@rollup/plugin-node-resolve';
 import fs from 'fs';
-import livereload from 'rollup-plugin-livereload';
 import { minify } from 'html-minifier';
 import path from 'path';
+import cleaner from 'rollup-plugin-cleaner';
+import copy from 'rollup-plugin-copy';
+import livereload from 'rollup-plugin-livereload';
 import postcss from 'rollup-plugin-postcss';
-import resolve from '@rollup/plugin-node-resolve';
 import serve from 'rollup-plugin-serve';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
+<% if (usesTS) { %>
+  import typescript from '@rollup/plugin-typescript';
+<% } %>
 
 const svelteConfig = require('./svelte.config');
 
@@ -29,7 +32,7 @@ const minifyHtml = (input, output, options) => ({
 });
 
 export default {
-  input: path.join(srcDir, 'main.js'),
+  input: path.join(srcDir, 'main.<%= scriptExt %>'),
   output: {
     sourcemap: true,
     format: 'iife',
@@ -55,6 +58,9 @@ export default {
       dedupe: ['svelte'],
     }),
     commonjs(),
+    <% if (usesTS) { %>
+    typescript({ sourceMap: !production }),
+    <% } %>
     copy({
       targets: [
         {

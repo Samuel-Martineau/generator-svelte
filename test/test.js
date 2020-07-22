@@ -49,9 +49,12 @@ describe('generator-svelte:app', function() {
                 'rollup.config.js',
                 'src/assets/favicon.png',
                 'src/index.html',
-                'src/main.js',
+                scriptLang === 'TypeScript' ? 'src/main.ts' : 'src/main.js',
                 'src/App.svelte',
                 `src/global.${styleExts[styleLang]}`,
+                ...(scriptLang === 'TypeScript'
+                  ? ['tsconfig.json', '.vscode/extensions.json']
+                  : []),
               ]));
             it('it creates the correct App.svelte file', function() {
               assert.fileContent(

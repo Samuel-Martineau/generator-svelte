@@ -7,8 +7,8 @@ const styleExts = {
 };
 
 const mimeTypes = {
-  JavaScript: 'javascript',
-  TypeScript: 'typescript',
+  JavaScript: 'js',
+  TypeScript: 'ts',
   CoffeeScript: 'coffee',
   CSS: 'css',
   SCSS: 'scss',
