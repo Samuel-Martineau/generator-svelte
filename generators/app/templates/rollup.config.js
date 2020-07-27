@@ -4,13 +4,14 @@ import resolve from '@rollup/plugin-node-resolve';
 import fs from 'fs';
 import { minify } from 'html-minifier';
 import path from 'path';
-import cleaner from 'rollup-plugin-cleaner';
 import copy from 'rollup-plugin-copy';
+import del from 'rollup-plugin-delete';
 import livereload from 'rollup-plugin-livereload';
 import postcss from 'rollup-plugin-postcss';
 import serve from 'rollup-plugin-serve';
 import svelte from 'rollup-plugin-svelte';
-import { terser } from 'rollup-plugin-terser';<% if (usesTS) { %>
+import { terser } from 'rollup-plugin-terser';
+<% if (usesTS) { %>
 import typescript from '@rollup/plugin-typescript';
 <% } %>
 
@@ -20,6 +21,12 @@ const production = !process.env.ROLLUP_WATCH;
 
 const srcDir = path.join(__dirname, 'src');
 const publicDir = path.join(__dirname, 'public');
+
+const mkdir = (path) => ({
+  generateBundle() {
+    mkdirp.sync(path);
+  }
+});
 
 const minifyHtml = (input, output, options) => ({
   generateBundle() {
@@ -39,8 +46,9 @@ export default {
     file: path.join(publicDir, 'bundle.js'),
   },
   plugins: [
-    cleaner({
-      targets: [publicDir],
+    mkdir(publicDir),
+    del({
+      targets: path.join(publicDir, '*'),
     }),
     svelte({
       dev: !production,
