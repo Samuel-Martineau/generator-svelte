@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import fs from 'fs';
 import { minify } from 'html-minifier';
+import mkdirp from 'mkdirp';
 import path from 'path';
 import copy from 'rollup-plugin-copy';
 import del from 'rollup-plugin-delete';
@@ -10,8 +11,8 @@ import livereload from 'rollup-plugin-livereload';
 import postcss from 'rollup-plugin-postcss';
 import serve from 'rollup-plugin-serve';
 import svelte from 'rollup-plugin-svelte';
-import mkdirp from 'mkdirp';
-import { terser } from 'rollup-plugin-terser';<% if (usesTS) { %>
+import { terser } from 'rollup-plugin-terser';
+<% if (usesTS) { %>
 import typescript from '@rollup/plugin-typescript';
 <% } %>
 
@@ -47,6 +48,7 @@ export default {
   },
   plugins: [
     mkdir(publicDir),
+    mkdir(path.join(publicDir, 'assets')),
     del({
       targets: path.join(publicDir, '*'),
     }),
