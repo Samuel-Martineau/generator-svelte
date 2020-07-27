@@ -1,6 +1,7 @@
-const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
+const execa = require('execa');
+const path = require('path');
 const ejs = require('ejs');
 const fs = require('fs');
 
@@ -130,6 +131,50 @@ describe('generator-svelte:app', function() {
           });
         assert.noFile('.git');
       });
+    });
+  });
+  describe('it is able to build the app', function() {
+    it('with NPM', async function() {
+      await helpers
+        .run(path.join(__dirname, '../generators/app'))
+        .withOptions({
+          'skip-install': false,
+        })
+        .withPrompts({
+          ...basePrompts,
+          packageManager: 'NPM',
+        });
+
+      let error = false;
+
+      try {
+        execa.sync('npm', ['run', 'build']);
+      } catch {
+        error = true;
+      }
+
+      assert.equal(error, false);
+    });
+    it('with Yarn', async function() {
+      await helpers
+        .run(path.join(__dirname, '../generators/app'))
+        .withOptions({
+          'skip-install': false,
+        })
+        .withPrompts({
+          ...basePrompts,
+          packageManager: 'Yarn',
+        });
+
+      let error = false;
+
+      try {
+        execa.sync('yarn', ['build']);
+      } catch {
+        error = true;
+      }
+
+      assert.equal(error, false);
     });
   });
 });
