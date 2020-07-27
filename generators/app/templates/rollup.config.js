@@ -71,22 +71,14 @@ export default {
     typescript({ sourceMap: !production }),
     <% } %>
     copy({
-      targets: [
-        {
-          src: path.join(srcDir, 'assets', '*'),
-          dest: path.join(publicDir, 'assets'),
-        },
-      ],
+      files: [path.join(srcDir, 'assets', '*')],
+      dest: path.join(publicDir, 'assets'),
     }),
     !production &&
       copy({
-        targets: [
-          {
-            src: path.join(srcDir, 'index.html'),
-            dest: publicDir,
-          },
-        ],
-      }),
+        files: [path.join(srcDir, 'index.html')],
+        dest: publicDir,
+      }), 
     !production &&
       serve({
         open: true,

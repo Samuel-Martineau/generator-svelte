@@ -48,7 +48,7 @@
     "svelte": "^3.0.0",
     "svelte-preprocess": "^3.9.10",
     "autoprefixer": "^9.8.2",
-    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-cpy": "^2.0.1",
     "rollup-plugin-cleaner": "^1.0.0",
     "html-minifier": "^4.0.0",
     "@rollup/plugin-babel": "^5.0.4",
