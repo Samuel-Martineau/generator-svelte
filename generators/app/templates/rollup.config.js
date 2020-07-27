@@ -5,7 +5,7 @@ import fs from 'fs';
 import { minify } from 'html-minifier';
 import mkdirp from 'mkdirp';
 import path from 'path';
-import copy from 'rollup-plugin-copy';
+import copy from 'rollup-plugin-cpy';
 import del from 'rollup-plugin-delete';
 import livereload from 'rollup-plugin-livereload';
 import postcss from 'rollup-plugin-postcss';
@@ -78,7 +78,7 @@ export default {
       copy({
         files: [path.join(srcDir, 'index.html')],
         dest: publicDir,
-      }), 
+      }),
     !production &&
       serve({
         open: true,
