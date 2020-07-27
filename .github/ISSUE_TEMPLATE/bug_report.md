@@ -32,6 +32,8 @@ A clear and concise description of what you expected to happen.
 **Platform (please complete the following information):**
  - OS: [e.g. Windows]
  - Generator version: [e.g. 2.0.0]
+ - Node version: [e.g. 14.0.0]
+ - NPM version: [e.g. 6.0.0]
 
 **Additional context**
 Add any other context about the problem here.
