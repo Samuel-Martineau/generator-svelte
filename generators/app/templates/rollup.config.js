@@ -10,9 +10,8 @@ import livereload from 'rollup-plugin-livereload';
 import postcss from 'rollup-plugin-postcss';
 import serve from 'rollup-plugin-serve';
 import svelte from 'rollup-plugin-svelte';
-import { terser } from 'rollup-plugin-terser';
-<% if (usesTS) { %>
-  import typescript from '@rollup/plugin-typescript';
+import { terser } from 'rollup-plugin-terser';<% if (usesTS) { %>
+import typescript from '@rollup/plugin-typescript';
 <% } %>
 
 const svelteConfig = require('./svelte.config');

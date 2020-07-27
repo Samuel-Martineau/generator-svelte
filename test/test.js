@@ -145,15 +145,16 @@ describe('generator-svelte:app', function() {
           packageManager: 'NPM',
         });
 
-      let error = false;
+      let isError = false;
 
       try {
         execa.sync('npm', ['run', 'build']);
-      } catch {
-        error = true;
+      } catch (error) {
+        isError = true;
+        console.log(error);
       }
 
-      assert.equal(error, false);
+      assert.equal(isError, false);
     });
     it('with Yarn', async function() {
       await helpers
@@ -166,15 +167,16 @@ describe('generator-svelte:app', function() {
           packageManager: 'Yarn',
         });
 
-      let error = false;
+      let isError = false;
 
       try {
         execa.sync('yarn', ['build']);
-      } catch {
-        error = true;
+      } catch (error) {
+        isError = true;
+        console.log(error);
       }
 
-      assert.equal(error, false);
+      assert.equal(isError, false);
     });
   });
 });
