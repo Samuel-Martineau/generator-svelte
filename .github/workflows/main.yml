@@ -5,6 +5,7 @@ on:
     paths:
       - 'generators/**'
       - 'package.json'
+  workflow_dispatch:
 
 jobs:
   test:
