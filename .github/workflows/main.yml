@@ -1,6 +1,9 @@
 name: Build
 
-on: push
+on:
+  push:
+    paths:
+      - 'generators/**'
 
 jobs:
   test:
@@ -8,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: [10, 12, 14]
+        node: [10, 12, 14, 15]
         os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
       - uses: actions/checkout@v1
