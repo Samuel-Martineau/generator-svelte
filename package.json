@@ -19,7 +19,7 @@
     "generators",
     "common"
   ],
-  "main": "generators/index.js",
+  "main": "generators/app/index.js",
   "keywords": [
     "svelte",
     "svelte.js",
