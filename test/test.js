@@ -47,7 +47,7 @@ describe('generator-svelte:app', function() {
                 '.gitignore',
                 'package.json',
                 'svelte.config.js',
-                'rollup.config.js',
+                'rollup.config.cjs',
                 'src/assets/favicon.png',
                 'src/index.html',
                 scriptLang === 'TypeScript' ? 'src/main.ts' : 'src/main.js',

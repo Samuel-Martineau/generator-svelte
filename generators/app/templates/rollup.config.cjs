@@ -1,19 +1,19 @@
-import babel from '@rollup/plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import fs from 'fs';
-import { minify } from 'html-minifier';
-import mkdirp from 'mkdirp';
-import path from 'path';
-import copy from 'rollup-plugin-cpy';
-import del from 'rollup-plugin-delete';
-import livereload from 'rollup-plugin-livereload';
-import postcss from 'rollup-plugin-postcss';
-import serve from 'rollup-plugin-serve';
-import svelte from 'rollup-plugin-svelte';
-import { terser } from 'rollup-plugin-terser';
+const { babel } = require('@rollup/plugin-babel')
+const commonjs = require('@rollup/plugin-commonjs')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const fs = require('fs')
+const { minify } =require('html-minifier') ;
+const mkdirp = require('mkdirp')
+const path = require('path')
+const copy = require('rollup-plugin-cpy')
+const del = require('rollup-plugin-delete')
+const livereload = require('rollup-plugin-livereload')
+const postcss = require('rollup-plugin-postcss')
+const serve = require('rollup-plugin-serve')
+const svelte = require('rollup-plugin-svelte')
+const { terser } =require( 'rollup-plugin-terser');
 <% if (usesTS) { %>
-import typescript from '@rollup/plugin-typescript';
+const typescript = require('@rollup/plugin-typescript')
 <% } %>
 
 const svelteConfig = require('./svelte.config');
@@ -38,7 +38,7 @@ const minifyHtml = (input, output, options) => ({
   },
 });
 
-export default {
+module.exports= {
   input: path.join(srcDir, 'main.<%= scriptExt %>'),
   output: {
     sourcemap: true,
@@ -62,7 +62,7 @@ export default {
       extract: path.join(publicDir, 'bundle.css'),
       minimize: production,
     }),
-    resolve({
+    nodeResolve({
       browser: true,
       dedupe: ['svelte'],
     }),

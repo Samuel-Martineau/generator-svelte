@@ -174,10 +174,10 @@ module.exports = class extends Generator {
         usesPug: markupLang === 'PUG',
       }),
     );
-    // Rollup.config.js
+    // Rollup.config.cjs
     this.fs.write(
-      this.destinationPath('rollup.config.js'),
-      ejs.render(this.fs.read(this.templatePath('rollup.config.js')), {
+      this.destinationPath('rollup.config.cjs'),
+      ejs.render(this.fs.read(this.templatePath('rollup.config.cjs')), {
         usesTS: scriptLang === 'TypeScript',
         scriptExt: scriptLang === 'TypeScript' ? 'ts' : 'js',
       }),
